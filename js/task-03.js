@@ -14,9 +14,11 @@ const images = [{
 
 
 const createGallery = ({ url, alt }) => {
-    `<li><img src="${url} alt="${alt}" width = 200 height = 150></li>`;
+    return `<li><img src="${url} alt="${alt}" width = 200 height = 150></li>`;
+
 }
-const arrGallery = images.reduce((acc, item) => acc + createGallery(item), "");
-const listGallery = document.querySelector("#gallery");
+const arrGallery = images.map((item) => createGallery(item)).join('');
+
+const listGallery = document.querySelector(".gallery");
 listGallery.insertAdjacentHTML("afterbegin", arrGallery);
 listGallery.setAttribute("style", "list-style-type:none; display: flex");
